@@ -2,7 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-healthcheckPath = "/health"
+healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
@@ -15,7 +15,3 @@ PORT = "8080"
 
 [[services.ports]]
 port = 8080
-
-[[services]]
-source = "."
-destination = "/var/www/html"
