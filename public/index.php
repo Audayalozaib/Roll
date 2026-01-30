@@ -2,7 +2,7 @@
 // نقطة دخول الويب هوك
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// تفعيل عرض الأخطاء للتطوير
+// تفعيل عرض الأخطاء للتطوير (في بيئة الإنتاج، قم بتعطيل هذا)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
