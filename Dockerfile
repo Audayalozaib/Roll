@@ -10,8 +10,11 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_sqlite sqlite3 zip \
+    && docker-php-ext-install gd pdo pdo_sqlite sqlite3 \
     && a2enmod rewrite
+
+# تثبيت امتداد zip بشكل منفصل
+RUN docker-php-ext-install zip
 
 # تثبيت Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
