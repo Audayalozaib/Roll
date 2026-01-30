@@ -1,0 +1,7 @@
+/vendor/
+/data/
+/logs/
+.env
+.git
+.gitignore
+README.md
