@@ -13,5 +13,7 @@
     },
     "scripts": {
         "start": "php -S 0.0.0.0:${PORT:-8080} -t public"
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
