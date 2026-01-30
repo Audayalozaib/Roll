@@ -6,8 +6,11 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
+    libzip-dev \
+    zip \
+    unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_sqlite sqlite3 \
+    && docker-php-ext-install gd pdo pdo_sqlite sqlite3 zip \
     && a2enmod rewrite
 
 # تثبيت Composer
@@ -23,13 +26,13 @@ COPY . /var/www/html/
 WORKDIR /var/www/html/
 RUN composer install --no-dev --optimize-autoloader
 
-# إنشاء مجلد قاعدة البيانات
-RUN mkdir -p data && chmod 777 data
+# إنشاء مجلد قاعدة البيانات والسجلات
+RUN mkdir -p data logs && chmod -R 777 data logs
 
 # إعدادات الأذونات
 RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R 755 /var/www/html/
-RUN chmod -R 777 /var/www/html/data/
+RUN chmod -R 777 /var/www/html/data/ /var/www/html/logs/
 
 # كشف المنفذ
 EXPOSE 8080
